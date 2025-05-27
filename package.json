@@ -9,8 +9,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "engines": {
-        "node": ">=22.0.0",
-        "npm": ">=8.0.0"
+        "node": ">=22.16.0",
+        "npm": ">=10.9.1"
     },
     "dependencies": {
         "express": "^4.18.2",
