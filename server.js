@@ -35,50 +35,6 @@ app.get("/api/health", (req, res) => {
     });
 });
 
-// Route API pour obtenir des données
-app.get("/api/data", (req, res) => {
-    const sampleData = {
-        message: "Bienvenue sur votre application Azure !",
-        data: [
-            { id: 1, nom: "Element 1", description: "Premier élément" },
-            { id: 2, nom: "Element 2", description: "Deuxième élément" },
-            { id: 3, nom: "Element 3", description: "Troisième élément" },
-        ],
-        meta: {
-            total: 3,
-            timestamp: new Date().toISOString(),
-        },
-    };
-
-    res.json(sampleData);
-});
-
-// Route POST exemple
-app.post("/api/submit", (req, res) => {
-    const { name, email, message } = req.body;
-
-    // Validation simple
-    if (!name || !email || !message) {
-        return res.status(400).json({
-            error: "Tous les champs sont requis",
-            required: ["name", "email", "message"],
-        });
-    }
-
-    // Simulation de traitement
-    console.log("Données reçues:", { name, email, message });
-
-    res.json({
-        success: true,
-        message: "Données reçues avec succès",
-        data: {
-            name,
-            email,
-            receivedAt: new Date().toISOString(),
-        },
-    });
-});
-
 // Gestion des erreurs 404
 app.use("*", (req, res) => {
     res.status(404).json({
