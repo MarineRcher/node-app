@@ -2,35 +2,6 @@ console.log("Script app.js chargé");
 
 let todos = [];
 
-// Fonction pour initialiser la base de données
-async function initDatabase() {
-    console.log("Initialisation de la base de données...");
-    try {
-        showLoading(true);
-        const response = await fetch("/api/init-db", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        if (response.ok) {
-            hideError();
-            await loadTodos();
-            console.log("Base de données initialisée avec succès");
-        } else {
-            const error = await response.json();
-            console.error("Erreur:", error);
-            showError("Erreur lors de l'initialisation: " + error.error);
-        }
-    } catch (error) {
-        console.error("Erreur de connexion:", error);
-        showError("Erreur de connexion: " + error.message);
-    } finally {
-        showLoading(false);
-    }
-}
-
 // Charger toutes les tâches
 async function loadTodos() {
     console.log("Chargement des tâches...");
